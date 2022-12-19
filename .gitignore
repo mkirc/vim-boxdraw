@@ -1,4 +1,6 @@
 /doc/tags
 *.pyc
+*.swp
+*.swo
 .env
 .env3

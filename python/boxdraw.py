@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import textwrap
+from diagonal import get_diag_block
 from pprint import pprint
 
 # -------- Utility functions --------
@@ -169,6 +170,16 @@ def draw_line_hv(lines, y1, x1, y2, x2, arrow):
         lines = overwrite_block(lines, y, x2, line(a, h))
     return lines
 
+def draw_line_diag(lines, y1, x1, y2, x2, arrow):
+    "Draws a diagonal line between two points, experimental"
+
+    y, x, h, w = block_pos(y1, x1, y2, x2)
+
+    diag_block = get_diag_block(h, w, y1, x1, y2, x2)
+    line_list = [''.join(l) for l in diag_block]
+
+    return overwrite_block(lines, y, x, line_list)
+
 def draw_line_vh(lines, y1, x1, y2, x2, arrow):
     "Draws an arrow between two points, always starting with the vertical line."
     y, x, h, w = block_pos(y1, x1, y2, x2)
@@ -259,6 +270,7 @@ CMDS = {
     '+-': [draw_line_vh, '---'],
     '+_': [draw_line_vh, '---'],
     '+|': [draw_line_hv, '---'],
+    '+~': [draw_line_diag, '---'],
 
     # Selection
     'ao': [select_outer_box],

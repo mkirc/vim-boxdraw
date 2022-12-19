@@ -100,6 +100,7 @@ vnoremap ++V :<C-u>call boxdraw#Draw("++v", [])<CR>
 vnoremap ++^ :<C-u>call boxdraw#Draw("++^", [])<CR>
 
 vnoremap +- :<C-u>call boxdraw#Draw("+-", [])<CR>
+vnoremap +~ :<C-u>call boxdraw#Draw("+~", [])<CR>
 vnoremap +_ :<C-u>call boxdraw#Draw("+_", [])<CR>
 vnoremap +\| :<C-u>call boxdraw#Draw("+\|", [])<CR>
 

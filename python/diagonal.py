@@ -9,10 +9,11 @@ def get_diag_block(h, w, y1, x1, y2, x2):
      
     characters = [
         '|' if w < h else '-',
-        '/' if slope > 0 else '\\'  
+        # gotcha: y rises downwards (with line count)
+        '/' if slope < 0 else '\\'   
     ]
 
-    # get positions for both
+    # get positions for both line and divider characters
     line_and_divider_positions = get_character_positions(w, h)
 
     diag_block = assemble_block(w, h, line_and_divider_positions, characters)
@@ -148,10 +149,10 @@ def get_leave_values(tree, key):
         yield from get_leave_values(tree['right'], key)
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    h, w, y1, x1, y2, x2 = [int(arg) for arg in sys.argv[1:7]]
+#     h, w, y1, x1, y2, x2 = [int(arg) for arg in sys.argv[1:7]]
 
-    for line in get_diag_block(h,w,y1,x1,y2,x2)[::-1]:
-        print(''.join(line), len(line))
+#     for line in get_diag_block(h, w, y1, x1, y2, x2)[::-1]:
+#         print(''.join(line), len(line))
 
